@@ -1,7 +1,6 @@
 import { errorHandler } from "../utils/error.js";
 import bcryptjs from "bcryptjs";
 import User from "../models/user.model.js";
-import { json } from "express";
 
 export const test = (req, res) => {
   res.json({
