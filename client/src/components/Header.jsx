@@ -8,22 +8,21 @@ const Header = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const navigate = useNavigate()
 
-  const handleSubmit=(e)=>{
-    e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set('searchTerm',searchTerm);
+    urlParams.set('searchTerm', searchTerm);
     const searchQuery = urlParams.toString();
-    navigate(`/search?${searchQuery}`)
-
-  }
+    navigate(`/search?${searchQuery}`);
+  };
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get('searchTerm');
-    if(searchTermFromUrl){
+    if (searchTermFromUrl) {
       setSearchTerm(searchTermFromUrl);
     }
-  }, [location.search])
+  }, [location.search]);
   
   return (
     <header className='bg-blue-200 shadow-md'>
@@ -37,6 +36,7 @@ const Header = () => {
         </Link>
         <form onSubmit={handleSubmit} className=' bg-slate-100 rounded-lg p-3 flex items-center'>
             <input type='text' placeholder='Search...' className='bg-transparent focus:outline-none w-24 sm:w-64 '
+            value={searchTerm}
             onChange={(e)=>setSearchTerm(e.target.value)}
             />
             <button>
