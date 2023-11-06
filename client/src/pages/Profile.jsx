@@ -178,28 +178,25 @@ export default function Profile() {
           alt="profile"
           className="rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2"
         />
-        <p className="text-sm self-center">
-          {fileUploadError ? (
-            <span className="text-red-700">
-              Error Image upload (image must be less than 2 mb)
-              <Alert
-                variant="MdErrorOutline"
-                text=" Error Image upload (image must be less than 2 mb)"
-              />
-            </span>
-          ) : filePerc > 0 && filePerc < 100 ? (
-            <span className="text-slate-700">{`Uploading ${filePerc}%`}</span>
-          ) : filePerc === 100 ? (
-            <div>
-              <Alert
-                text={"Image successfully uploaded!"}
-                variant={"MdCheck"}
-              />
-            </div>
-          ) : (
-            ""
-          )}
-        </p>
+        {fileUploadError ? (
+          <Alert
+            variant="error"
+            text=" Error Image upload (image must be less than 2 mb)"
+          />
+        ) : filePerc > 0 && filePerc < 100 ? (
+          <div className="flex ">
+            <p
+              style={{ width: `${filePerc}%` }}
+              className="text-white bg-blue-900 inline-block   p-1 align rounded-md items-center justify-center  text-xs transition duration-500 ease-in-out"
+            >{`${filePerc}%`}</p>
+          </div>
+        ) : filePerc === 100 ? (
+          <div>
+            <Alert text={"Image successfully uploaded!"} variant={"MdCheck"} />
+          </div>
+        ) : (
+          ""
+        )}
         <input
           type="text"
           placeholder="username"
@@ -225,7 +222,7 @@ export default function Profile() {
         />
         <button
           disabled={loading}
-          className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80"
+          className="bg-blue-900 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80"
         >
           {loading ? "Loading..." : "Update"}
         </button>
@@ -248,20 +245,20 @@ export default function Profile() {
         </span>
       </div>
 
-      <p className="text-red-700 mt-5">{error ? error : ""}</p>
-      <p className="text-green-700 mt-5">
-        {updateSuccess ? "User is updated successfully!" : ""}
-      </p>
+      {error ? <Alert text={error} variant={"error"} /> : ""}
+      {updateSuccess ? (
+        <Alert text={"User is updated successfully!"} variant={"success"} />
+      ) : (
+        ""
+      )}
       <button onClick={handleShowListings} className="text-green-700 w-full">
         Show Listings
       </button>
-      <p className="text-red-700 mt-5">
-        {showListingsError ? (
-          <Alert variant="MdErrorOutline" text="Error showing listings" />
-        ) : (
-          ""
-        )}
-      </p>
+      {showListingsError ? (
+        <Alert variant="error" text="Error in showing listings" />
+      ) : (
+        ""
+      )}
 
       {userListings && userListings.length > 0 && (
         <div className="flex flex-col gap-4">
