@@ -188,7 +188,7 @@ export default function Profile() {
             <p
               style={{ width: `${filePerc}%` }}
               className="text-white bg-blue-900 inline-block   p-1 align rounded-md items-center justify-center  text-xs transition duration-500 ease-in-out"
-            >{`${filePerc}%`}</p>
+            >{`Uploading ${filePerc}%`}</p>
           </div>
         ) : filePerc === 100 ? (
           <div>
