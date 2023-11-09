@@ -53,7 +53,11 @@ export default function Listing() {
 
   return (
     <main>
-      {loading && <p className="text-center my-7 text-2xl">Loading...</p>}
+      {loading && (
+        <div className="mt-10 text-xl text-blue-900 text-center  w-full">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 m-auto border-blue-800"></div>
+        </div>
+      )}
       {error && <Alert text={"Something went wrong!"} variant={"error"} />}
       {listing && !loading && !error && (
         <div>
