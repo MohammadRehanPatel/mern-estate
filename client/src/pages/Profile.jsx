@@ -19,8 +19,8 @@ import {
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Alert from "../components/Alert";
-import { MdDeleteForever } from "react-icons/md";
-import { FaSignOutAlt } from "react-icons/fa";
+import { MdDeleteForever, MdListAlt, MdEdit } from "react-icons/md";
+import { FaSignOutAlt, FaEdit } from "react-icons/fa";
 
 export default function Profile() {
   const fileRef = useRef(null);
@@ -165,8 +165,8 @@ export default function Profile() {
     }
   };
   return (
-    <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
+    <div className="p-2 max-w-lg mx-auto">
+      <h1 className="text-3xl font-semibold text-center my-6">Profile</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           onChange={(e) => setFile(e.target.files[0])}
@@ -239,14 +239,14 @@ export default function Profile() {
       <div className="flex justify-between mt-5 ">
         <button
           onClick={handleSignOut}
-          className="inline-flex items-center  px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-md"
+          className="inline-flex items-center  px-4 py-2 bg-red-600 hover:opacity-95 text-white text-sm font-medium rounded-md"
         >
           <MdDeleteForever className="h-6 w-6 mx-1 my-0" />
           Delete Account
         </button>
         <button
           onClick={handleSignOut}
-          className="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-md"
+          className="inline-flex items-center px-4 py-2 bg-red-600 hover:opacity-95 text-white text-sm font-medium rounded-md"
         >
           <FaSignOutAlt className="h-4 w-4 mx-2 my-0" />
           Sign Out
@@ -259,9 +259,15 @@ export default function Profile() {
       ) : (
         ""
       )}
-      <button onClick={handleShowListings} className="text-green-700 w-full">
-        Show Listings
-      </button>
+      <div className="flex items-center justify-center   ">
+        <button
+          onClick={handleShowListings}
+          className="text-white inline-flex items-center px-4  py-1 text-md bg-blue-600 hover:opacity-95  font-semibold rounded-md"
+        >
+          <MdListAlt className="h-7 w-7 " />
+          Show Listings
+        </button>
+      </div>
       {showListingsError ? (
         <Alert variant="error" text="Error in showing listings" />
       ) : (
@@ -295,12 +301,16 @@ export default function Profile() {
               <div className="flex flex-col item-center">
                 <button
                   onClick={() => handleListingDelete(listing._id)}
-                  className="text-red-700 uppercase"
+                  className=" uppercase inline-flex items-center px-4 py-2 bg-red-600 hover:opacity-95 text-white text-sm font-medium rounded-md"
                 >
+                  <MdDeleteForever className="h-4 w-4 mx-2 my-0" />
                   Delete
                 </button>
                 <Link to={`/update-listing/${listing._id}`}>
-                  <button className="text-green-700 uppercase">Edit</button>
+                  <button className=" uppercase inline-flex items-center px-4 py-2 bg-green-600 hover:opacity-95 text-white text-md font-medium rounded-md ">
+                    <FaEdit className="h-4 w-4 mx-2 my-0" />
+                    Edit
+                  </button>
                 </Link>
               </div>
             </div>

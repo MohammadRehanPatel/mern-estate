@@ -87,18 +87,24 @@ const Header = () => {
               </button>
             </div>
           </Link>
-          <Link to="/profile" className="flex items-center">
+          <Link to="/profile" className="items-center">
             {currentUser ? (
-              <img
-                className="rounded-full h-8 w-8 items-center  px-2 py-2   hover:shadow-[-1px_-1px_5px_rgba(255,_255,_255,_0.6),_1px_1px_5px_rgba(0,_0,_0,_0.3),inset_-2px_-2px_5px_rgba(255,_255,_255,_1),inset_2px_2px_4px_rgba(0,_0,_0,_0.3)] object-cover"
-                src={currentUser.avatar}
-                alt="profile"
-              />
+              <div className="">
+                <img
+                  className="rounded-full h-8 w-8 flex items-center  px-4 py-2  
+                   mt-1
+                  hover:shadow-[-1px_-1px_5px_rgba(255,_255,_255,_0.6),_1px_1px_5px_rgba(0,_0,_0,_0.3),inset_-2px_-2px_5px_rgba(255,_255,_255,_1),inset_2px_2px_4px_rgba(0,_0,_0,_0.3)] 
+                  transition-all
+                  object-cover"
+                  src={currentUser.avatar}
+                  alt="profile"
+                />
+              </div>
             ) : (
               <div className="">
                 <button
                   className={`
-                  
+                  px-4 py-2 
                   flex items-center gap-2 
                   text-blue-700
                   
