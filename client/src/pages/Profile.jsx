@@ -261,7 +261,7 @@ export default function Profile() {
       )}
 
       {userListings && userListings.length > 0 && (
-        <div className="flex flex-col gap-2 p-4 bg-gray-200">
+        <div className="flex flex-col gap-3 ">
           <h1 className="text-center mt-7 text-2xl font-semibold">
             Your Listings
           </h1>
