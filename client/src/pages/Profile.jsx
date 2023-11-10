@@ -19,6 +19,9 @@ import {
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Alert from "../components/Alert";
+import { MdDeleteForever } from "react-icons/md";
+import { FaSignOutAlt } from "react-icons/fa";
+
 export default function Profile() {
   const fileRef = useRef(null);
   const { currentUser, loading, error } = useSelector((state) => state.user);
@@ -233,16 +236,21 @@ export default function Profile() {
           Create Listing
         </Link>
       </form>
-      <div className="flex justify-between mt-5">
-        <span
-          onClick={handleDeleteUser}
-          className="text-red-700 cursor-pointer"
+      <div className="flex justify-between mt-5 ">
+        <button
+          onClick={handleSignOut}
+          className="inline-flex items-center  px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-md"
         >
-          Delete account
-        </span>
-        <span onClick={handleSignOut} className="text-red-700 cursor-pointer">
-          Sign out
-        </span>
+          <MdDeleteForever className="h-6 w-6 mx-1 my-0" />
+          Delete Account
+        </button>
+        <button
+          onClick={handleSignOut}
+          className="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-md"
+        >
+          <FaSignOutAlt className="h-4 w-4 mx-2 my-0" />
+          Sign Out
+        </button>
       </div>
 
       {error ? <Alert text={error} variant={"error"} /> : ""}
