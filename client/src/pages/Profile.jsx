@@ -298,17 +298,17 @@ export default function Profile() {
                 <p>{listing.name}</p>
               </Link>
 
-              <div className="flex flex-col item-center">
+              <div className="flex flex-col item-center gap-2">
                 <button
                   onClick={() => handleListingDelete(listing._id)}
                   className=" uppercase inline-flex items-center px-4 py-2 bg-red-600 hover:opacity-95 text-white text-sm font-medium rounded-md"
                 >
-                  <MdDeleteForever className="h-4 w-4 mx-2 my-0" />
+                  <MdDeleteForever className="h-4 w-4 " />
                   Delete
                 </button>
                 <Link to={`/update-listing/${listing._id}`}>
                   <button className=" uppercase inline-flex items-center px-4 py-2 bg-green-600 hover:opacity-95 text-white text-md font-medium rounded-md ">
-                    <FaEdit className="h-4 w-4 mx-2 my-0" />
+                    <MdEdit className="h-4 w-4" />
                     Edit
                   </button>
                 </Link>
