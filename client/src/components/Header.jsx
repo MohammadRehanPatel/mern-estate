@@ -50,9 +50,8 @@ const Header = () => {
         </form>
         <ul className="flex gap-4">
           <Link to="/">
-            <div className="">
-              <button
-                className={`
+            <button
+              className={`
         px-4 py-2 
         flex items-center gap-2 
         text-blue-700
@@ -63,11 +62,10 @@ const Header = () => {
         hover:shadow-[-1px_-1px_5px_rgba(255,_255,_255,_0.6),_1px_1px_5px_rgba(0,_0,_0,_0.3),inset_-2px_-2px_5px_rgba(255,_255,_255,_1),inset_2px_2px_4px_rgba(0,_0,_0,_0.3)]
         hover:text-blue-500
     `}
-              >
-                <FaHome />
-                <span>Home</span>
-              </button>
-            </div>
+            >
+              <FaHome />
+              <span>Home</span>
+            </button>
           </Link>
           <Link to="/about">
             <div className="">
@@ -89,10 +87,10 @@ const Header = () => {
               </button>
             </div>
           </Link>
-          <Link to="/profile">
+          <Link to="/profile" className="flex items-center">
             {currentUser ? (
               <img
-                className="rounded-full h-7 w-7 object-cover"
+                className="rounded-full h-7 w-7 items-center  px-2 py-2   hover:shadow-[-1px_-1px_5px_rgba(255,_255,_255,_0.6),_1px_1px_5px_rgba(0,_0,_0,_0.3),inset_-2px_-2px_5px_rgba(255,_255,_255,_1),inset_2px_2px_4px_rgba(0,_0,_0,_0.3)] object-cover"
                 src={currentUser.avatar}
                 alt="profile"
               />
@@ -100,7 +98,7 @@ const Header = () => {
               <div className="">
                 <button
                   className={`
-                  px-2 py-2 
+                  
                   flex items-center gap-2 
                   text-blue-700
                   

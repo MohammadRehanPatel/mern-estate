@@ -261,16 +261,16 @@ export default function Profile() {
       )}
 
       {userListings && userListings.length > 0 && (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2 p-4 bg-gray-200">
           <h1 className="text-center mt-7 text-2xl font-semibold">
             Your Listings
           </h1>
           {userListings.map((listing) => (
             <div
               key={listing._id}
-              className="border rounded-lg p-3 flex justify-between items-center gap-4"
+              className="border rounded-lg p-3 flex justify-between items-center bg-gray-100 gap-4 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg "
             >
-              <Link to={`/listing/${listing._id}`}>
+              <Link to={`/listing/${listing._id}`} className=" ">
                 <img
                   src={listing.imageUrls[0]}
                   alt="listing cover"
