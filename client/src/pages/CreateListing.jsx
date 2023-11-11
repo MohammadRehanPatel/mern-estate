@@ -9,6 +9,8 @@ import { app } from "../firebase";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Alert from "../components/Alert";
+import { FaFile, FaFileAlt } from "react-icons/fa";
+import { MdFileUpload, MdOutlineFileUpload } from "react-icons/md";
 
 export default function CreateListing() {
   const { currentUser } = useSelector((state) => state.user);
@@ -155,7 +157,7 @@ export default function CreateListing() {
     }
   };
   return (
-    <main className="p-3 max-w-4xl mx-auto">
+    <main className="p-6 max-w-5xl  mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7">
         Create a Listing
       </h1>
@@ -311,13 +313,13 @@ export default function CreateListing() {
           </div>
         </div>
         <div className="flex flex-col flex-1 gap-4">
-          <p className="font-semibold">
+          {/* <p className="font-semibold">
             Images:
             <span className="font-normal text-gray-600 ml-2">
               The first image will be the cover (max 6)
             </span>
-          </p>
-          <div className="flex gap-4">
+          </p> */}
+          {/* <div className="flex gap-4">
             <input
               onChange={(e) => setFiles(e.target.files)}
               className="p-3 border border-gray-300 rounded w-full"
@@ -334,7 +336,49 @@ export default function CreateListing() {
             >
               {uploading ? "Uploading..." : "Upload"}
             </button>
+          </div> */}
+          {/*  */}
+          <div class=" font-sans text-gray-900 w-full  border-box ">
+            <div class="flex justify-center w-full mx-auto sm:max-w-lg">
+              <div class="flex flex-col items-center justify-center w-full h-auto my-2 bg-white sm:w-3/4 sm:rounded-lg sm:shadow-xl">
+                <div class="mt-2 mb-2 text-center">
+                  <h2 class="text-2xl font-semibold mb-2">Upload your files</h2>
+                  <p class="text-xs text-gray-500">
+                    The first image will be the cover (max 6)
+                  </p>
+                </div>
+                <form class="relative w-4/5 h-28 max-w-xs bg-gray-100 rounded-lg shadow-inner">
+                  <input
+                    type="file"
+                    class="hidden"
+                    id="images"
+                    accept="image/*"
+                    multiple
+                    onChange={(e) => setFiles(e.target.files)}
+                  />
+                  <label
+                    for="images"
+                    class="z-20 flex flex-col-reverse items-center justify-center w-full h-full cursor-pointer"
+                  >
+                    <p class="z-10 text-xs font-light text-center text-gray-500">
+                      Drag & Drop your images here
+                    </p>
+
+                    <MdOutlineFileUpload className="z-10 w-8 h-8 mb-1 text-blue-500" />
+                  </label>
+                </form>
+                <button
+                  type="button"
+                  disabled={uploading}
+                  onClick={handleImageSubmit}
+                  className="p-3  m-2 text-blue-700 border w-32 border-blue-700 rounded uppercase hover:shadow-lg disabled:opacity-80"
+                >
+                  {uploading ? "Uploading..." : "Upload"}
+                </button>
+              </div>
+            </div>
           </div>
+          {/*  */}
           {imageUploadError && (
             <Alert text={imageUploadError} variant={"error"} />
           )}
@@ -342,7 +386,7 @@ export default function CreateListing() {
             formData.imageUrls.map((url, index) => (
               <div
                 key={url}
-                className="flex justify-between p-3 border items-center"
+                className="flex justify-between p-3 border bg-transparent shadow-inner items-center"
               >
                 <img
                   src={url}
@@ -352,7 +396,7 @@ export default function CreateListing() {
                 <button
                   type="button"
                   onClick={() => handleRemoveImage(index)}
-                  className="p-3 text-red-700 rounded-lg uppercase hover:opacity-75"
+                  className="inline-flex items-center px-4 py-2 bg-red-600 hover:opacity-90 text-white text-sm font-medium rounded-md"
                 >
                   Delete
                 </button>
