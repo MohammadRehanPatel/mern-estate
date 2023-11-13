@@ -156,6 +156,13 @@ export default function CreateListing() {
       setLoading(false);
     }
   };
+  const renderFileList = () => (
+    <ol>
+      {[...files].map((f, i) => (
+        <li key={i}>{files.length}</li>
+      ))}
+    </ol>
+  );
   return (
     <main className="p-6 max-w-5xl  mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7">
@@ -313,30 +320,6 @@ export default function CreateListing() {
           </div>
         </div>
         <div className="flex flex-col flex-1 gap-4">
-          {/* <p className="font-semibold">
-            Images:
-            <span className="font-normal text-gray-600 ml-2">
-              The first image will be the cover (max 6)
-            </span>
-          </p> */}
-          {/* <div className="flex gap-4">
-            <input
-              onChange={(e) => setFiles(e.target.files)}
-              className="p-3 border border-gray-300 rounded w-full"
-              type="file"
-              id="images"
-              accept="image/*"
-              multiple
-            />
-            <button
-              type="button"
-              disabled={uploading}
-              onClick={handleImageSubmit}
-              className="p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80"
-            >
-              {uploading ? "Uploading..." : "Upload"}
-            </button>
-          </div> */}
           {/*  */}
           <div class=" font-sans text-gray-900 w-full  border-box ">
             <div class="flex justify-center w-full mx-auto sm:max-w-lg">
@@ -350,20 +333,21 @@ export default function CreateListing() {
                 <form class="relative w-4/5 h-28 max-w-xs bg-gray-100 rounded-lg shadow-inner">
                   <input
                     type="file"
-                    class="hidden"
                     id="images"
                     accept="image/*"
                     multiple
+                    className="hidden z-10"
                     onChange={(e) => setFiles(e.target.files)}
                   />
                   <label
                     for="images"
                     class="z-20 flex flex-col-reverse items-center justify-center w-full h-full cursor-pointer"
                   >
-                    <p class="z-10 text-xs font-light text-center text-gray-500">
-                      Drag & Drop your images here
+                    <p class="z-10 text-sm font-normal text-center  text-gray-500 rounded-full  border-blue-200">
+                      {files.length > 0
+                        ? `Total Images Selected : ${files.length}`
+                        : "Drag & Drop your images here"}
                     </p>
-
                     <MdOutlineFileUpload className="z-10 w-8 h-8 mb-1 text-blue-500" />
                   </label>
                 </form>
